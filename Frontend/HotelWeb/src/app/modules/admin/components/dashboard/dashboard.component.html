@@ -1,0 +1,69 @@
+<div
+  *ngIf="showModal"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+>
+  <div class="bg-white rounded-lg shadow-lg dark:bg-gray-800 p-6 max-w-sm">
+    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+      Confirm Delete
+    </h3>
+    <p class="mt-2 text-gray-600 dark:text-gray-400">
+      Are you sure you want to delete this room?
+    </p>
+
+    <div class="mt-4 flex justify-end space-x-2">
+      <button
+        (click)="confirmDelete()"
+        class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+      >
+        Delete
+      </button>
+      <button
+        (click)="cancelDelete()"
+        class="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="mx-auto max-w-sm">
+  <div
+    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center"
+    *ngFor="let room of room"
+  >
+    <a href="#">
+      <img class="rounded-t-lg" src="/public/favicon.ico" alt="" />
+    </a>
+    <div class="p-5">
+      <h5
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      >
+        {{ room.name }}
+      </h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        Type: {{ room.type }}
+      </p>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        Price: {{ room.price }}
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 md:gap-6">
+      <div class="relative z-0 w-full mb-5 group">
+        <p routerLink="/admin/room/{{ room.id }}/edit">Edit</p>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <p (click)="showConfirm(room.id)">Delete</p>
+      </div>
+    </div>
+  </div>
+  <!-- Pagination -->
+</div>
+<div style="width: 100%; display: flex; justify-content: center">
+  <nz-pagination
+    [nzPageIndex]="currentPage"
+    [nzTotal]="total"
+    [nzPageSize]="1"
+    (nzPageIndexChange)="pageIndexChange($event)"
+  ></nz-pagination>
+</div>

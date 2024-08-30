@@ -1,0 +1,5 @@
+.nz-pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}

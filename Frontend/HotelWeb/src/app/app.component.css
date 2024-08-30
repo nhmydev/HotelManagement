@@ -1,0 +1,5 @@
+.router-link-active {
+  color: white;
+  background-color: #1d4ed8;
+  --tw-bg-opacity: 1;
+}
