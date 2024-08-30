@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from '../../../auth/services/storage/user-storage.service';
 
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = 'http://localhost:8080/api/admin/';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class AdminService {
   constructor(private http: HttpClient) {}
 
   postRoomDetails(roomDTO: any): Observable<any> {
-    return this.http.post(BASE_URL + 'api/admin/room', roomDTO, {
+    return this.http.post(BASE_URL + 'room', roomDTO, {
       headers: this.createAuthorHeader(),
     });
   }
@@ -24,22 +24,22 @@ export class AdminService {
     );
   }
   getRooms(pageNumber: number): Observable<any> {
-    return this.http.get(BASE_URL + `api/admin/rooms/${pageNumber}`, {
+    return this.http.get(BASE_URL + `rooms/${pageNumber}`, {
       headers: this.createAuthorHeader(),
     });
   }
   getRoomByID(id: number): Observable<any> {
-    return this.http.get(BASE_URL + `api/admin/room/${id}`, {
+    return this.http.get(BASE_URL + `room/${id}`, {
       headers: this.createAuthorHeader(),
     });
   }
   updateRoom(id: number, roomDTO: any): Observable<any> {
-    return this.http.put(BASE_URL + `api/admin/room/${id}`, roomDTO, {
+    return this.http.put(BASE_URL + `room/${id}`, roomDTO, {
       headers: this.createAuthorHeader(),
     });
   }
   deleteRoom(id: number): Observable<any> {
-    return this.http.delete(BASE_URL + `api/admin/room/${id}`, {
+    return this.http.delete(BASE_URL + `room/${id}`, {
       headers: this.createAuthorHeader(),
     });
   }

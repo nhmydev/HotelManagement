@@ -1,7 +1,7 @@
 package com.myproject.HotelManagement.controller.admin;
 
 import com.myproject.HotelManagement.dto.RoomDto;
-import com.myproject.HotelManagement.services.admin.rooms.RoomService;
+import com.myproject.HotelManagement.services.admin.rooms.RoomsService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
-public class RoomController {
-    private final RoomService roomService;
+public class RoomsController {
+    private final RoomsService roomService;
 
 
     @PostMapping("/room")

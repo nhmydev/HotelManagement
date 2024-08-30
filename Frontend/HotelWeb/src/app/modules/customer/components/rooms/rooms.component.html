@@ -1,1 +1,40 @@
-<p>rooms works!</p>
+<div class="mx-auto max-w-sm">
+  <div
+    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center"
+    *ngFor="let room of room"
+  >
+    <a href="#">
+      <img class="rounded-t-lg" src="/public/favicon.ico" alt="" />
+    </a>
+    <div class="p-5">
+      <h5
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      >
+        {{ room.name }}
+      </h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        Type: {{ room.type }}
+      </p>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        Price: {{ room.price }}
+      </p>
+    </div>
+    <!-- <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-5 group">
+          <p routerLink="/admin/room/{{ room.id }}/edit">Edit</p>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <p (click)="showConfirm(room.id)">Delete</p>
+        </div>
+      </div> -->
+  </div>
+  <!-- Pagination -->
+</div>
+<div style="width: 100%; display: flex; justify-content: center">
+  <nz-pagination
+    [nzPageIndex]="currentPage"
+    [nzTotal]="total"
+    [nzPageSize]="1"
+    (nzPageIndexChange)="pageIndexChange($event)"
+  ></nz-pagination>
+</div>

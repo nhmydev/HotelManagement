@@ -3,7 +3,7 @@ package com.myproject.HotelManagement.services.admin.rooms;
 import com.myproject.HotelManagement.dto.RoomDto;
 import com.myproject.HotelManagement.dto.RoomResponse;
 
-public interface RoomService {
+public interface RoomsService {
     boolean postRoom(RoomDto roomDto);
     RoomResponse getAll(int pageNumbers);
     RoomDto getRoomById(Long id);

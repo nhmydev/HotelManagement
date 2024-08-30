@@ -12,12 +12,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class RoomServiceImpl implements RoomService{
+public class RoomsServiceImpl implements RoomsService{
     private final RoomRepo roomRepo;
 
     public boolean postRoom(RoomDto roomDto){
@@ -26,7 +25,7 @@ public class RoomServiceImpl implements RoomService{
             room.setName(roomDto.getName());
             room.setType(roomDto.getType());
             room.setPrice(roomDto.getPrice());
-            room.setBooked(true);
+            room.setBooked(false);
             roomRepo.save(room);
             return true;
         }catch (Exception e){
