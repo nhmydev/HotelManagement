@@ -6,13 +6,18 @@ import { RoomsComponent } from './modules/customer/components/rooms/rooms.compon
 import { DashboardComponent } from './modules/admin/components/dashboard/dashboard.component';
 import { PostroomComponent } from './modules/admin/components/postroom/postroom.component';
 import { UpdateroomComponent } from './modules/admin/components/updateroom/updateroom.component';
+import { ReservationComponent } from './modules/admin/components/reservation/reservation.component';
+import { MybookingComponent } from './modules/customer/components/mybooking/mybooking.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'customer',
-    children: [{ path: 'rooms', component: RoomsComponent }],
+    children: [
+      { path: 'rooms', component: RoomsComponent },
+      { path: 'booking', component: MybookingComponent },
+    ],
   },
   {
     path: 'admin',
@@ -20,6 +25,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'room', component: PostroomComponent },
       { path: 'room/:id/edit', component: UpdateroomComponent },
+      { path: 'reservation', component: ReservationComponent },
     ],
   },
 ];

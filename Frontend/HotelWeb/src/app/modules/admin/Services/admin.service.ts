@@ -33,6 +33,11 @@ export class AdminService {
       headers: this.createAuthorHeader(),
     });
   }
+  getReversation(pageNumber: number): Observable<any> {
+    return this.http.get(BASE_URL + `reservation/${pageNumber}`, {
+      headers: this.createAuthorHeader(),
+    });
+  }
   updateRoom(id: number, roomDTO: any): Observable<any> {
     return this.http.put(BASE_URL + `room/${id}`, roomDTO, {
       headers: this.createAuthorHeader(),
@@ -40,6 +45,11 @@ export class AdminService {
   }
   deleteRoom(id: number): Observable<any> {
     return this.http.delete(BASE_URL + `room/${id}`, {
+      headers: this.createAuthorHeader(),
+    });
+  }
+  changStatus(id: number, status: String): Observable<any> {
+    return this.http.get(BASE_URL + `reservation/${id}/${status}`, {
       headers: this.createAuthorHeader(),
     });
   }

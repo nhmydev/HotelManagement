@@ -16,12 +16,14 @@ export class DashboardComponent {
   currentPage = 1;
   room = [];
   total: any;
+  totalPage;
   selectedRoomId: number | null = null;
   constructor(private adminService: AdminService) {
     this.getRooms();
   }
   getRooms() {
     this.adminService.getRooms(this.currentPage - 1).subscribe((res) => {
+      this.totalPage = res.totalPage;
       this.room = res.roomDtos;
       this.total = res.totalPage * 1;
     });

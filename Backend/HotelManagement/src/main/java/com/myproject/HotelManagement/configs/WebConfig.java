@@ -31,7 +31,7 @@ public class WebConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/admin/**").hasAuthority(UserRole.ADMIN.name())
-                        .requestMatchers("/api/customer/**").permitAll()
+                        .requestMatchers("/api/customer/**").hasAuthority(UserRole.CUSTOMER.name())
                         .anyRequest().authenticated())
                 .sessionManagement(manament->manament.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())

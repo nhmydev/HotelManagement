@@ -28,42 +28,83 @@
 </div>
 
 <div class="mx-auto max-w-sm">
-  <div
-    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center"
-    *ngFor="let room of room"
-  >
-    <a href="#">
-      <img class="rounded-t-lg" src="/public/favicon.ico" alt="" />
-    </a>
-    <div class="p-5">
-      <h5
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-      >
-        {{ room.name }}
-      </h5>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        Type: {{ room.type }}
-      </p>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        Price: {{ room.price }}
-      </p>
-    </div>
-    <div class="grid md:grid-cols-2 md:gap-6">
-      <div class="relative z-0 w-full mb-5 group">
-        <p routerLink="/admin/room/{{ room.id }}/edit">Edit</p>
-      </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <p (click)="showConfirm(room.id)">Delete</p>
+  <div class="grid grid-col-2 gap-4 rounded-md">
+    <div
+      class="relative items-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center"
+      *ngFor="let room of room"
+    >
+      <a href="#">
+        <img class="rounded-t-lg" src="/public/favicon.ico" alt="" />
+      </a>
+      <div class="p-5">
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          {{ room.name }}
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Type: {{ room.type }}
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Price: {{ room.price }}
+        </p>
+        <div class="grid md:grid-cols-2 md:gap-6">
+          <div
+            class="relative h-full z-0 w-full mb-5 group bg-gray-500 flex items-center justify-center rounded-lg"
+          >
+            <p class="text-white" routerLink="/admin/room/{{ room.id }}/edit">
+              Edit
+            </p>
+          </div>
+
+          <div
+            class="relative flex h-full z-0 w-full mb-5 group bg-red-600 items-center justify-center rounded-lg"
+          >
+            <p class="text-white" (click)="showConfirm(room.id)">Delete</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Pagination -->
 </div>
-<div style="width: 100%; display: flex; justify-content: center">
-  <nz-pagination
-    [nzPageIndex]="currentPage"
-    [nzTotal]="total"
-    [nzPageSize]="1"
-    (nzPageIndexChange)="pageIndexChange($event)"
-  ></nz-pagination>
+<!-- Pagination -->
+<div class="relative items-center justify-center min-h-screen">
+  <div class="p-6 bg-white shadow-lg rounded-lg">
+    <nav aria-label="Page navigation example" class="flex justify-center">
+      <ul class="inline-flex -space-x-px text-sm">
+        <li>
+          <a
+            class="flex items-center justify-center px-4 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="pageIndexChange(currentPage - 1)"
+            [class.disabled]="currentPage === 1"
+            [class.cursor-not-allowed]="currentPage === 1"
+          >
+            Previous
+          </a>
+        </li>
+
+        <li *ngFor="let page of [].constructor(totalPage); let i = index">
+          <a
+            class="flex items-center justify-center px-4 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="pageIndexChange(i + 1)"
+            [class.bg-gray-200]="currentPage === i + 1"
+            [class.text-gray-700]="currentPage === i + 1"
+          >
+            {{ i + 1 }}
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="flex items-center justify-center px-4 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="pageIndexChange(currentPage + 1)"
+            [class.disabled]="currentPage === totalPage"
+            [class.cursor-not-allowed]="currentPage === totalPage"
+          >
+            Next
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
