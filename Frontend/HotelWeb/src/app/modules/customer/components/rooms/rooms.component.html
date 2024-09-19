@@ -26,47 +26,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Pagination -->
-  <div class="flex justify-center mt-10">
-    <ul class="flex items-center space-x-2">
-      <!-- Previous Page -->
-      <li>
-        <button
-          (click)="pageIndexChange(currentPage - 1)"
-          [disabled]="currentPage === 1"
-          class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Previous
-        </button>
-      </li>
-
-      <!-- Page Numbers -->
-      <li *ngFor="let page of [].constructor(total)">
-        <button
-          (click)="pageIndexChange(page)"
-          [ngClass]="{
-            'bg-blue-500 text-white': currentPage === page,
-            'bg-gray-200 text-gray-700': currentPage !== page
-          }"
-          class="px-4 py-2 rounded-md hover:bg-blue-500 hover:text-white"
-        >
-          {{ page + 1 }}
-        </button>
-      </li>
-
-      <!-- Next Page -->
-      <li>
-        <button
-          (click)="pageIndexChange(currentPage + 1)"
-          [disabled]="currentPage === total"
-          class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          Next
-        </button>
-      </li>
-    </ul>
-  </div>
 </div>
 
 <!-- Modal -->
@@ -130,5 +89,47 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="relative items-center justify-center min-h-screen">
+  <div class="p-6 bg-white shadow-lg rounded-lg">
+    <nav aria-label="Page navigation example" class="flex justify-center">
+      <ul class="inline-flex -space-x-px text-sm">
+        <li>
+          <a
+            class="flex items-center justify-center px-4 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="pageIndexChange(currentPage - 1)"
+            [class.disabled]="currentPage === 1"
+            [class.cursor-not-allowed]="currentPage === 1"
+          >
+            Previous
+          </a>
+        </li>
+
+        <li *ngFor="let page of [].constructor(totalPage); let i = index">
+          <a
+            class="flex items-center justify-center px-4 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="pageIndexChange(i + 1)"
+            [class.bg-gray-200]="currentPage === i + 1"
+            [class.text-gray-700]="currentPage === i + 1"
+          >
+            {{ i + 1 }}
+          </a>
+        </li>
+
+        <li>
+          <a
+            class="flex items-center justify-center px-4 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="pageIndexChange(currentPage + 1)"
+            [class.disabled]="currentPage === totalPage"
+            [class.cursor-not-allowed]="currentPage === totalPage"
+          >
+            Next
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>

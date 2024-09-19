@@ -49,19 +49,19 @@
           Price: {{ room.price }}
         </p>
         <div class="grid md:grid-cols-2 md:gap-6">
-          <div
-            class="relative h-full z-0 w-full mb-5 group bg-gray-500 flex items-center justify-center rounded-lg"
+          <button
+            class="relative h-full z-0 w-full mb-5 text-white group bg-gray-500 flex items-center justify-center rounded-lg"
+            routerLink="/admin/room/{{ room.id }}/edit"
           >
-            <p class="text-white" routerLink="/admin/room/{{ room.id }}/edit">
-              Edit
-            </p>
-          </div>
+            Edit
+          </button>
 
-          <div
-            class="relative flex h-full z-0 w-full mb-5 group bg-red-600 items-center justify-center rounded-lg"
+          <button
+            class="relative flex h-full z-0 w-full mb-5 text-white group bg-red-600 items-center justify-center rounded-lg"
+            (click)="showConfirm(room.id)"
           >
-            <p class="text-white" (click)="showConfirm(room.id)">Delete</p>
-          </div>
+            Delete
+          </button>
         </div>
       </div>
     </div>

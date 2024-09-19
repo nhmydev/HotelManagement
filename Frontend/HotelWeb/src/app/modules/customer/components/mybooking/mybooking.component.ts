@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-mybooking',
   standalone: true,
-  imports: [],
+  imports: [NgIf, NgFor],
   templateUrl: './mybooking.component.html',
   styleUrl: './mybooking.component.css',
 })

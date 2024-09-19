@@ -1,0 +1,25 @@
+.active {
+  background-color: blue;
+}
+
+nav {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.disabled {
+  color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+a.bg-gray-200 {
+  background-color: #e2e8f0;
+}
+
+a.text-gray-700 {
+  color: #4a5568;
+}

@@ -19,7 +19,7 @@ public class RoomServiceImpl implements RoomService{
 
     public RoomResponse getAvailableRoom(int pageNumbers){
         Pageable pageable = PageRequest.of(pageNumbers,6);
-        Page<Room> roomPage =  roomRepo.findBybooked(false,pageable);
+        Page<Room> roomPage =  roomRepo.findByavailable(true,pageable);
 
         RoomResponse roomResponse = new RoomResponse();
         roomResponse.setTotalPage(roomPage.getTotalPages());

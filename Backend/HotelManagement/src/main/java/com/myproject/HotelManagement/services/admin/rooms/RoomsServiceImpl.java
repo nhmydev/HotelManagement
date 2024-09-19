@@ -25,7 +25,7 @@ public class RoomsServiceImpl implements RoomsService{
             room.setName(roomDto.getName());
             room.setType(roomDto.getType());
             room.setPrice(roomDto.getPrice());
-            room.setBooked(false);
+            room.setAvailable(false);
             roomRepo.save(room);
             return true;
         }catch (Exception e){
@@ -61,6 +61,7 @@ public class RoomsServiceImpl implements RoomsService{
             roomFound.setName(roomDto.getName());
             roomFound.setType(roomDto.getType());
             roomFound.setPrice(roomDto.getPrice());
+            roomFound.setAvailable(roomDto.isAvailable());
             roomRepo.save(roomFound);
             return true;
         }

@@ -8,16 +8,18 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  loginError: string = '';
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -47,7 +49,8 @@ export class LoginComponent {
         }
       },
       (error) => {
-        console.log('Bad');
+        this.loginError =
+          'Login failed. Please check your username or password and try again.';
       }
     );
   }

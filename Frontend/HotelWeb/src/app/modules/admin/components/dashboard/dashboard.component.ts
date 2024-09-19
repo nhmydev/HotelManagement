@@ -25,10 +25,13 @@ export class DashboardComponent {
     this.adminService.getRooms(this.currentPage - 1).subscribe((res) => {
       this.totalPage = res.totalPage;
       this.room = res.roomDtos;
-      this.total = res.totalPage * 1;
+      this.total = res.totalPage * 2;
     });
   }
   pageIndexChange(value: any) {
+    if (value < 1 || value > this.totalPage) {
+      return;
+    }
     this.currentPage = value;
     this.getRooms();
   }

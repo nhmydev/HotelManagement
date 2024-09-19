@@ -16,7 +16,7 @@ public class Room {
     private String name;
     private String type;
     private Long price;
-    private boolean booked;
+    private boolean available;
 
     public RoomDto getRoomDto(){
         RoomDto roomDto = new RoomDto();
@@ -24,7 +24,7 @@ public class Room {
         roomDto.setType(type);
         roomDto.setPrice(price);
         roomDto.setName(name);
-        roomDto.setBooked(booked);
+        roomDto.setAvailable(available);
         return roomDto;
     }
 

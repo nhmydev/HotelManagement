@@ -1,1 +1,39 @@
-<p>mybooking works!</p>
+<div class="flex items-center justify-center min-h-screen">
+  <div *ngIf="bookingList.length === 0">
+    <p>No bookings available.</p>
+  </div>
+
+  <!-- Hiển thị danh sách booking nếu không rỗng -->
+  <ul *ngIf="bookingList.length > 0">
+    <li *ngFor="let booking of bookingList">
+      <div class="mx-auto max-w-sm">
+        <!-- Rooms Display -->
+        <div
+          class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center"
+        >
+          <a href="#">
+            <img class="rounded-t-lg" src="/public/favicon.ico" alt="" />
+          </a>
+          <div class="p-5">
+            <h5
+              class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              {{ booking.username }}
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Type: {{ booking.roomType }}
+            </p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Price: {{ booking.price }}
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="relative z-0 w-full mb-5 group">
+              <p>Booking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

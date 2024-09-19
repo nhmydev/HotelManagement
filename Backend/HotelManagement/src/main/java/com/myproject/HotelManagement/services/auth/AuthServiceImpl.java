@@ -20,16 +20,16 @@ import java.util.Optional;
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
 
-    //Create Admin
+//    Create Admin
 //    @PostConstruct
 //    public void createAdminAccount(){
 //        Optional<User> adminAccount = userRepository.findByUserRole(UserRole.ADMIN);
 //        if(adminAccount.isEmpty()){
 //            User user = new User();
-//            user.setEmail("nguyenhominhy@gmail.com");
-//            user.setName("minh y");
+//            user.setEmail("admin@gmail.com");
+//            user.setName("admin");
 //            user.setUserRole(UserRole.ADMIN);
-//            user.setPassword(new BCryptPasswordEncoder().encode("minhy"));
+//            user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 //            userRepository.save(user);
 //            System.out.println("Tao tai khoan thanh cong");
 //        }else {

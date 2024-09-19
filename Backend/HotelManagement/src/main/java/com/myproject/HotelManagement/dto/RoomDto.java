@@ -9,5 +9,5 @@ public class RoomDto {
     private String name;
     private String type;
     private Long price;
-    private boolean booked;
+    private boolean available;
 }

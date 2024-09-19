@@ -18,6 +18,7 @@ export class RoomsComponent {
   currentPage = 1;
   room = [];
   total: any;
+  totalPage;
   selectedRoom: any = null;
 
   constructor(private customerService: CustomerService) {
@@ -26,10 +27,14 @@ export class RoomsComponent {
   getRooms() {
     this.customerService.getRooms(this.currentPage - 1).subscribe((res) => {
       this.room = res.roomDtos;
+      this.totalPage = res.totalPage;
       this.total = res.totalPage * 1;
     });
   }
   pageIndexChange(value: any) {
+    if (value < 1 || value > this.totalPage) {
+      return;
+    }
     this.currentPage = value;
     this.getRooms();
   }
