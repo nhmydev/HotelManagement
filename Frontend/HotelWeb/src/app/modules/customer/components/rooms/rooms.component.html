@@ -1,12 +1,20 @@
-<div class="mx-auto max-w-sm">
+<div
+  *ngIf="room.length === 0"
+  class="flex items-center justify-center min-h-screen"
+>
+  <!-- Kiểm tra nếu room rỗng -->
+  <div>
+    <p>No rooms available.</p>
+    <!-- Thông báo nếu không có phòng -->
+  </div>
+</div>
+
+<div class="mx-auto max-w-sm" *ngIf="room.length > 0">
   <!-- Rooms Display -->
   <div
     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center"
     *ngFor="let room of room"
   >
-    <a href="#">
-      <img class="rounded-t-lg" src="/public/favicon.ico" alt="" />
-    </a>
     <div class="p-5">
       <h5
         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
@@ -21,9 +29,12 @@
       </p>
     </div>
     <div class="text-center">
-      <div class="relative z-0 w-full mb-5 group" (click)="openModal(room.id)">
+      <button
+        class="bg-green-400 relative z-0 w-[50%] mb-5 group rounded-lg"
+        (click)="openModal(room.id)"
+      >
         <p>Booking</p>
-      </div>
+      </button>
     </div>
   </div>
 </div>
